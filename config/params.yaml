@@ -1,0 +1,57 @@
+base:
+  project: Emotion Classifier
+  random_state: 42
+  target_col: label
+  main_col: text
+
+data_source:
+  batch_files: data/raw/emotion-labels-train.csv
+
+
+load_data:
+  raw_dataset_csv: data/raw/emotion-labels-train.csv
+  x_csv: data/raw/x_array.csv.npy
+  y_csv: data/raw/y_array.csv.npy
+
+dl_params:
+  voc_size: 5000
+  sent_length: 200
+  padding: pre
+  embedding_vector_features: 40
+  LSTM: 100
+  loss: binary_crossentropy
+  optimizer: adam
+  metrics: accuracy
+  activation: sigmoid
+  epochs: 10
+  batch_size: 64
+
+split_data:
+  x_train_path: data/processed/x_train_spam_or_not_spam.csv.npy
+  x_test_path: data/processed/x_test_spam_or_not_spam.csv.npy
+  y_train_path: data/processed/y_train_spam_or_not_spam.csv.npy
+  y_test_path: data/processed/y_test_spam_or_not_spam.csv.npy
+  test_size: 0.2
+
+estimators:
+  ElasticNet:
+    params:
+      # alpha: 0.88
+      # l1_ratio: 0.89
+      alpha: 0.9
+      l1_ratio: 0.4
+
+model_dir: models/spam classifier.h5/spam classifier.h5/spam classifier.h5
+
+reports:
+  params: reports/params.json
+  scores: reports/scores.json 
+
+webapp_model_dir: machine learning/prediction_service/models/spam classifier.h5
+
+mlflow_config:
+  artifacts_dir: artifacts
+  experiment_name: LSTM
+  run_name: mlops
+  registered_model_name: LSTMSpam
+  remote_server_uri: http://localhost:1234
