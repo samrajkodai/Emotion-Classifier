@@ -25,6 +25,9 @@ def upload():
             return predictions.predict(request.form['new_freq'])
         else:
             return "empty text detected"
+    
+    else:
+        return "server error"
 
         
 if __name__=="__main__":

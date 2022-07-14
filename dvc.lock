@@ -32,8 +32,8 @@ stages:
       md5: fb73f5021ce0415aaa8105b9148d7532
       size: 372586
     - path: src/get_data.py
-      md5: 6b27767fe68e7e418219a4cce9e914a3
-      size: 755
+      md5: 29d338c7be95468efcd7e2478aadb6f4
+      size: 710
     outs:
     - path: data/raw/emotion-labels-train.csv
       md5: fb73f5021ce0415aaa8105b9148d7532
@@ -54,8 +54,8 @@ stages:
       md5: fe8dc9711f7400ab867aaa7c0e5a7023
       size: 21800
     - path: src/train_evaluate.py
-      md5: e9a9b69c64003dea754d4734307befa3
-      size: 2567
+      md5: 1569af24d5f57048b1908f4f96547124
+      size: 2759
   log_production_model:
     cmd: python src/train_evaluate.py --config=config/params.yaml
     deps:
