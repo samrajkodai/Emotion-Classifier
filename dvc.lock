@@ -38,3 +38,27 @@ stages:
     - path: data/raw/emotion-labels-train.csv
       md5: fb73f5021ce0415aaa8105b9148d7532
       size: 376200
+  train_and_evaluate:
+    cmd: python src/train_evaluate.py --config=config/params.yaml
+    deps:
+    - path: data/processed/x_test_spam_or_not_spam.csv.npy
+      md5: 969a267d599b68baffc65f1abf89e71f
+      size: 66476672
+    - path: data/processed/x_train_spam_or_not_spam.csv.npy
+      md5: daf1a2df37ea4a4551f412eb94e597dc
+      size: 199209152
+    - path: data/processed/y_test_spam_or_not_spam.csv.npy
+      md5: a18b774dee5cd23ef05019498991655b
+      size: 7360
+    - path: data/processed/y_train_spam_or_not_spam.csv.npy
+      md5: fe8dc9711f7400ab867aaa7c0e5a7023
+      size: 21800
+    - path: src/train_evaluate.py
+      md5: e9a9b69c64003dea754d4734307befa3
+      size: 2567
+  log_production_model:
+    cmd: python src/train_evaluate.py --config=config/params.yaml
+    deps:
+    - path: src/log_production_model.py
+      md5: 14946756d565fe3c8310160fdc9690b1
+      size: 1780

@@ -5,13 +5,20 @@ from turtle import pd
 from django import conf
 from pkg_resources import split_sections
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score,confusion_matrix
 from sklearn.model_selection import KFold
 from get_data import get_data,read_params
-
+import mlflow
+from urllib.parse import urlparse
 import numpy as np
 from src.get_data import read_params as pd
 
+def evaluation(x, y):
+    accuracy = accuracy_score(x, y)
+    matrix = confusion_matrix(x, y)
+
+    print("accuracy : ", accuracy, '\n'"matrix : ", matrix)
+    return accuracy, matrix
 
 def validation(config_path):
     config=read_params(config_path)
@@ -31,15 +38,31 @@ def validation(config_path):
 
     split_size=config['split_data']['test_size']
 
+    mlflow_config = config['mlflow_config']
+    remote_server_uri = mlflow_config["remote_server_uri"]
 
-    model=LogisticRegression()
-    model.fit(x_train,y_train)
+    mlflow.set_tracking_uri(remote_server_uri)
+    mlflow.set_experiment(mlflow_config['experiment_name'])
 
-    y_pred=model.predict(x_test)
+    with mlflow.start_run(run_name=mlflow_config['run_name']) as mlops_run:
+        model=LogisticRegression()
+        model.fit(x_train,y_train)
 
-    print(y_pred)
+        y_pred=model.predict(x_test)
+        (accuracy, matrix) = evaluation(y_test, y_pred.round())
 
-    print(accuracy_score(y_test,y_pred))
+        mlflow.log_metric("accuracy",accuracy)
+
+        tracking_url_type_store = urlparse(mlflow.get_artifact_uri()).scheme
+
+        if tracking_url_type_store != "file":
+            mlflow.sklearn.log_model(
+                model, 
+                "model",
+                 registered_model_name=mlflow_config['registered_model_name'])
+
+        else:
+            mlflow.sklearn.load_model((model,"model"))
 
 if __name__=="__main__":
     args=argparse.ArgumentParser()
