@@ -1,12 +1,6 @@
 from flask import Flask,redirect,url_for,request,render_template
 import numpy as np
-from tensorflow.keras.preprocessing.image import load_img,img_to_array
-import tensorflow as tf
 import os
-from keras.models import load_model
-from tensorflow.keras.applications.imagenet_utils import preprocess_input, decode_predictions
-from tensorflow.keras.preprocessing.text import one_hot
-from tensorflow.keras.preprocessing.sequence import pad_sequences
 import yaml
 import pickle
 
