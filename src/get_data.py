@@ -13,6 +13,11 @@ def get_data(config_path):
     config=read_params(config_path)
     data_path=config['data_source']['batch_files']
     df=pd.read_csv(data_path,encoding='utf-8')
+
+    raw_data_path=config["load_data"]["raw_dataset_csv"]
+
+    df.to_csv(raw_data_path,sep=",",index=False)
+
     return df
 
 if __name__=="__main__":

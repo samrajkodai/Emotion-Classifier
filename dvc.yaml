@@ -1,0 +1,21 @@
+stages:
+  load_data:
+    cmd: python src/get_data.py --config=config/params.yaml
+    deps:
+    - src/get_data.py
+    - data_given/emotion-labels-train.csv
+    outs:
+    - data/raw/emotion-labels-train.csv
+
+
+  split_data:
+      cmd: python src/split_data.py --config=config/params.yaml
+      deps:
+      - src/split_data.py
+      - data/raw/x_array.csv.npy
+      - data/raw/y_array.csv.npy
+      outs:
+      - data/processed/x_train_spam_or_not_spam.csv.npy
+      - data/processed/x_test_spam_or_not_spam.csv.npy
+      - data/processed/y_train_spam_or_not_spam.csv.npy
+      - data/processed/y_test_spam_or_not_spam.csv.npy

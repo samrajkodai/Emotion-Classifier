@@ -5,7 +5,7 @@ base:
   main_col: text
 
 data_source:
-  batch_files: data/raw/emotion-labels-train.csv
+  batch_files: data_given/emotion-labels-train.csv
 
 
 load_data:

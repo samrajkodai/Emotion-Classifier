@@ -1,0 +1,40 @@
+schema: '2.0'
+stages:
+  split_data:
+    cmd: python src/split_data.py --config=config/params.yaml
+    deps:
+    - path: data/raw/x_array.csv.npy
+      md5: c3b79c8ae4a7b0653b72051346b88eb0
+      size: 265685696
+    - path: data/raw/y_array.csv.npy
+      md5: 01052791e55e7e10c7462c210061c9b9
+      size: 29032
+    - path: src/split_data.py
+      md5: d77c36cf3a48a963e9eb05df1a319dc3
+      size: 1470
+    outs:
+    - path: data/processed/x_test_spam_or_not_spam.csv.npy
+      md5: 969a267d599b68baffc65f1abf89e71f
+      size: 66476672
+    - path: data/processed/x_train_spam_or_not_spam.csv.npy
+      md5: daf1a2df37ea4a4551f412eb94e597dc
+      size: 199209152
+    - path: data/processed/y_test_spam_or_not_spam.csv.npy
+      md5: a18b774dee5cd23ef05019498991655b
+      size: 7360
+    - path: data/processed/y_train_spam_or_not_spam.csv.npy
+      md5: fe8dc9711f7400ab867aaa7c0e5a7023
+      size: 21800
+  load_data:
+    cmd: python src/get_data.py --config=config/params.yaml
+    deps:
+    - path: data_given/emotion-labels-train.csv
+      md5: fb73f5021ce0415aaa8105b9148d7532
+      size: 372586
+    - path: src/get_data.py
+      md5: 6b27767fe68e7e418219a4cce9e914a3
+      size: 755
+    outs:
+    - path: data/raw/emotion-labels-train.csv
+      md5: fb73f5021ce0415aaa8105b9148d7532
+      size: 376200
