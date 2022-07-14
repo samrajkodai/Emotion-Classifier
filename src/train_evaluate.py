@@ -11,7 +11,8 @@ from get_data import get_data,read_params
 import mlflow
 from urllib.parse import urlparse
 import numpy as np
-from src.get_data import read_params as pd
+import pickle
+
 
 def evaluation(x, y):
     accuracy = accuracy_score(x, y)
@@ -31,6 +32,11 @@ def validation(config_path):
     model_dir = config["model_dir"]
     scores_file = config["reports"]["scores"]
     params_file = config["reports"]["params"]
+    
+    predict_pkl = config["pickle"]["classifier_pkl"]
+    cv_pkl = config["pickle"]["cv_transform_pkl"]
+
+
     x_train = np.load(x_train_data_path, allow_pickle=True)
     x_test = np.load(x_test_data_path, allow_pickle=True)
     y_train = np.load(y_train_data_path, allow_pickle=True)
@@ -63,6 +69,17 @@ def validation(config_path):
 
         else:
             mlflow.sklearn.load_model((model,"model"))
+
+
+    
+    predict_file=open(predict_pkl,'wb')
+
+    pickle.dump(model,predict_file)
+    
+
+
+
+
 
 if __name__=="__main__":
     args=argparse.ArgumentParser()

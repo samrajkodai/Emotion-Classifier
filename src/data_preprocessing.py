@@ -16,6 +16,7 @@ from nltk.stem import PorterStemmer
 import re
 from sklearn.metrics import accuracy_score,confusion_matrix,plot_confusion_matrix
 from sklearn.feature_extraction.text import CountVectorizer
+import pickle
 
 def data_preprocess(config_path):
     config=read_params(config_path)
@@ -24,6 +25,8 @@ def data_preprocess(config_path):
 
     main_col=config['base']['main_col']
     target_col=config['base']['target_col']
+
+    cv_pkl = config["pickle"]["cv_transform_pkl"]
 
 
     ##checking the missing  values
@@ -63,6 +66,10 @@ def data_preprocess(config_path):
     raw_data_path=config["load_data"]["raw_dataset_csv"]
     x=np.save(x_csv, x)
     y=np.save(y_csv, y)
+
+    cv_file=open(cv_pkl,'wb')
+
+    pickle.dump(vectorizer,cv_file)
 
 
 

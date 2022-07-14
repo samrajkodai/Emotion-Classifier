@@ -13,18 +13,10 @@ load_data:
   x_csv: data/raw/x_array.csv.npy
   y_csv: data/raw/y_array.csv.npy
 
-dl_params:
-  voc_size: 5000
-  sent_length: 200
-  padding: pre
-  embedding_vector_features: 40
-  LSTM: 100
-  loss: binary_crossentropy
-  optimizer: adam
-  metrics: accuracy
-  activation: sigmoid
-  epochs: 10
-  batch_size: 64
+pickle: 
+  classifier_pkl: data/processed/predict.pkl
+  cv_transform_pkl: data/processed/cv-transform.pkl
+
 
 split_data:
   x_train_path: data/processed/x_train_spam_or_not_spam.csv.npy
