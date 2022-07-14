@@ -47,6 +47,11 @@ def data_preprocess(config_path):
     
 
     y=df[target_col]
+
+    y.replace(("fear","anger","joy","sadness"),(0,1,2,3),inplace=True)
+
+    print(y)
+    
     
     vectorizer=CountVectorizer()
     x=vectorizer.fit_transform(corpus).toarray()

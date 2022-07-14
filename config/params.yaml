@@ -31,7 +31,7 @@ split_data:
   x_test_path: data/processed/x_test_spam_or_not_spam.csv.npy
   y_train_path: data/processed/y_train_spam_or_not_spam.csv.npy
   y_test_path: data/processed/y_test_spam_or_not_spam.csv.npy
-  test_size: 0.2
+  test_size: 0.25
 
 estimators:
   ElasticNet:
