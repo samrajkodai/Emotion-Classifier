@@ -19,7 +19,7 @@ def predict(data):
   predict_path=config['pickle']['classifier_pkl']
   cv_path=config['pickle']['cv_transform_pkl']
 
-  clas=pickle.load(open(predict_path,'rb'))
+  clas=pickle.load(open("predict.pkl",'rb'))
   cv=pickle.load(open(cv_path,'rb'))
   data=[data]
   x=cv.transform(data).toarray()
