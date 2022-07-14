@@ -19,33 +19,56 @@ def read_params(config_path):
         config=yaml.safe_load(yaml_file)
     return config
 
+
 def predict(data):
-
-  print(data)
   config=read_params(params_path)
-
   predict_path=config['pickle']['classifier_pkl']
   cv_path=config['pickle']['cv_transform_pkl']
 
   clas=pickle.load(open(predict_path,'rb'))
   cv=pickle.load(open(cv_path,'rb'))
-
   data=[data]
+  x=cv.transform(data).toarray()
+  s=clas.predict(x)
 
-  data=cv.transform(data).toarray()
   
-  print(data)
-  res=clas.predict(data)
-
-  print(res)
-
-  if res==0:
+  if s==0:
     return "fear 😨😨😨😨"
-  elif res==1:
+  elif s==1:
     return "anger 😡😡😡😡"
-  elif res==2:
-    res='joy 😂😂😂😂' 
-  elif res==3:
+  elif s==2:
+    return 'joy 😂😂😂😂'
+  elif s==3:
     return "sad 😔😔😔😔"
   else:
     return "sorry"
+
+
+
+# def predict(data):
+
+#   print(data)
+#   config=read_params(params_path)
+
+  
+
+#   data=[data]
+
+#   data=cv.transform(data).toarray()
+  
+#   print(data)
+#   res=clas.predict(data)[0]
+
+#   print(res)
+#   print(type(res))
+
+#   if res==0:
+#     return "fear 😨😨😨😨"
+#   elif res==1:
+#     return "anger 😡😡😡😡"
+#   elif res==2:
+#     res='joy 😂😂😂😂' 
+#   elif res==3:
+#     return "sad 😔😔😔😔"
+#   else:
+#     return "sorry"

@@ -19,9 +19,12 @@ def home():
 @app.route('/predict', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
-      data=request.get_data()
-      print("data",request.form['new_freq'])
-      return predictions.predict(request.form['new_freq'])
+        if request.form['new_freq']!="":
+            data=request.get_data()
+            print("data",request.form['new_freq'])
+            return predictions.predict(request.form['new_freq'])
+        else:
+            return "empty text detected"
 
         
 if __name__=="__main__":
