@@ -7,7 +7,10 @@
 for live project you can visit https://emotionclass.herokuapp.com/
 
 ## <a href="url"><img src="https://user-images.githubusercontent.com/61903698/178228250-a11a8416-3443-4c90-8616-8eda1edc4572.jpg" align="left" height="48" width="48" ></a>Description
-The Aim of the project is to find the text given by the user is spam or not.
+* Emotion Classifier created as an AI module Integrated with webapp
+by using NLP, Machine Learning and Flask API.
+* Created as a proof of concept (POC) and the aim is to find users
+emotions.
 
 ## <a href="url"><img src="https://user-images.githubusercontent.com/61903698/178230062-a2e8bf94-4769-4e02-a26b-ed3696aae3fe.png" align="left" height="48" width="48" ></a>Dataset
 you can download and use the dataset from kaggle please visit this link to download the dataset
@@ -27,9 +30,9 @@ https://www.kaggle.com/search?q=spam+email+in%3Adatasets](https://www.kaggle.com
 * flask
 * gunicorn
 * PyYAML
-* tensorflow-cpu
 * nltk
 * mlflow
+* pickle5==0.0.1
 
 to install above libraries please run the command
 
@@ -54,7 +57,7 @@ To deploy this project run
 
 #### Git Commands
 ```bash
-     git remote add origin https://github.com/samrajkodai/samrajkodai.git
+     git remote add origin https://github.com/<your git>/<app name>.git
      git add .
      git commit -m "your text"
      git branch -M main   
