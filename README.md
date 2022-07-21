@@ -1,5 +1,5 @@
 
-# <a href="url"><img src="https://user-images.githubusercontent.com/61903698/178227001-a84748ea-5fe9-4157-8db1-4a4efc94f694.png" align="left" height="48" width="48" ></a> <a href="url"><img src="https://user-images.githubusercontent.com/61903698/178227384-dc1bcff2-9649-4dd8-af12-3c8c7bc4ad0b.jpg" align="left" height="48" width="48" ></a>  Emotion Classifier.
+#   Emotion Classifier.
 
 ![6428f74d-40b2-4026-be26-dd088b542a52](https://user-images.githubusercontent.com/61903698/180166677-bfb13515-6007-4051-8b57-73aa3cc1e4f4.gif)
 
