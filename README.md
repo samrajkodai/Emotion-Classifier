@@ -4,7 +4,7 @@
 ![ed866f5a-0d56-4183-82f8-df72e75b](https://user-images.githubusercontent.com/61903698/179741068-d6b81380-f2da-4da1-92dd-40cded74a8fb.gif)
 
 
-for live project you can visit https://spamclass.herokuapp.com/
+for live project you can visit https://emotionclass.herokuapp.com/
 
 ## <a href="url"><img src="https://user-images.githubusercontent.com/61903698/178228250-a11a8416-3443-4c90-8616-8eda1edc4572.jpg" align="left" height="48" width="48" ></a>Description
 The Aim of the project is to find the text given by the user is spam or not.
